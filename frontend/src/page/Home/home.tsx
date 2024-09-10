@@ -57,8 +57,7 @@ const HomePage = () => {
       </div>
 
       <div className="new-items-header">
-        <p>NEW!!!!!!!</p>
-        <p>GIGIGI</p>
+      <p>NEW ITEMS</p>
       </div>
 
       <div className="item-list">
