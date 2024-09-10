@@ -11,6 +11,10 @@ import Icon from "@ant-design/icons/lib/components/Icon";
 function SignupPage() {
 
   const navigate = useNavigate();
+
+  const OpenSignup = () => {
+    navigate('/Signup');
+  };
   
   const [messageApi, contextHolder] = message.useMessage();
   

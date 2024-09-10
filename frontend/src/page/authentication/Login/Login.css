@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -23,7 +27,9 @@ body {
   }
   
   .logo {
-    width: 150px;
+    width: 50px;
+    height: auto;
+
   }
   
   h2 {
@@ -76,6 +82,7 @@ body {
    margin-left: 1200px;
    cursor: pointer;
   }
+
 
 
 

@@ -14,12 +14,8 @@ const Navbar = () => {
             <input type="text" placeholder="search"/>
             
           </div>
-            <Link to ="/Login">
               <button className="button-login">LOG IN</button>
-            </Link>
-            <Link to ="/Signup">
               <button className="button-sign-up">SIGN UP</button>
-            </Link>
         </div>
       </div>
     </div>

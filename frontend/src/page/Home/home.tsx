@@ -18,6 +18,8 @@ import { useNavigate } from "react-router-dom";
 
 import "./home.css";
 import Navbar from "../Component_home/Navbar";
+import { Button, Card, Form, Input, message, Flex, Row, Col } from "antd";
+
 
 const bannerImages = [banner1, banner2, banner3];
 
@@ -40,6 +42,7 @@ const HomePage = () => {
   return (<>
     
     <div className="main-page">
+    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
     <Navbar/>
       <div className="banner-section">
         <center>
@@ -57,7 +60,7 @@ const HomePage = () => {
       </div>
 
       <div className="new-items-header">
-      <p>NEW ITEMS</p>
+        <p>NEW ITEMS</p>
       </div>
 
       <div className="item-list">
@@ -65,6 +68,7 @@ const HomePage = () => {
           <ItemCard key={product.id} data={product} />
         ))}
       </div>
+      </Col>
     </div>
   </>);
 };

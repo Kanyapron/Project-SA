@@ -2,7 +2,7 @@ import './Login.css';
 import {ArrowBendUpLeft} from 'phosphor-react'
 import logo from'../../../assets/Logo.png'
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input, message} from "antd";
+import { Button, Form, Input, message, Col} from "antd";
 import { LoginInterface } from '../../../interfaces/Login';
 import {Login} from "../../../services/https"
 
@@ -56,15 +56,15 @@ function LoginPage(){
   return (<>
 
     {contextHolder}
-    
-    <div className="login-container">
 
-    <center>
-      <img src={logo} className="logo" />
+      <div className="login-container">
 
-        <div className="login-box">
+      <center>
+        <img src={logo} className="logo" />
 
-        <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
+          <div className="login-box">
+
+          <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
 
             <Form.Item 
               label="Email"
@@ -82,10 +82,13 @@ function LoginPage(){
 
             <Button type="primary" htmlType='submit' className="login-button" onClick={OpenLogin}>Log In</Button>
             <div>Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
-        </Form>
-        </div>
-      </center>
-    </div>
+          </Form>
+
+          </div>
+
+        </center>
+        
+      </div>
   </>)
 }
 
