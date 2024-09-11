@@ -102,7 +102,7 @@ function ProfileEdit (){
             <ArrowBendUpLeft size={32} />
         </div>
         <img src={logo} className="logo" alt="Logo" />
-        <h2>PROFILE</h2>
+        <h2>PROFILE EDIT</h2>
                                                                               {/* autoComplete="off" */}
         <Divider />                                                                     
         <Form name="basic" form={form} layout="vertical" onFinish={onFinish}> 
@@ -132,15 +132,14 @@ function ProfileEdit (){
           </Form.Item>
 
         <Form.Item>
-          <Space>
-            
+          
+          <center>
             <Button type="primary" htmlType="submit" className="btn update">อัปเดต</Button>
-            
             <Link to="/Profile">
             <Button type="primary" htmlType="button" className="btn cancel">ยกเลิก</Button>
             </Link>
-
-          </Space>
+          </center>
+          
         </Form.Item>
 
 

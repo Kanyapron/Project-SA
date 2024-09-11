@@ -4,8 +4,20 @@
 
 .signuppage-button{
   margin-top: 3vh;
+  background-color: #333;
+}
+
+.signuppage-button.ant-btn:hover{
+  background-color: #444 !important;
+  border-color: #444 !important;
 }
 
 .cancel-button{
   margin-left: 5vh;
+  background-color: #ffa24c;
+}
+
+.cancel-button.ant-btn:hover{
+  background-color: #ff8c1a !important;
+  border-color: #ff8c1a !important;
 }

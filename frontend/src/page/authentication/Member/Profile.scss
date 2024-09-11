@@ -1,20 +1,11 @@
 // โครงสร้างหน้าหลัก
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .profile-container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: white;
+    background-color: #fdca71;
     padding: 30px;
     border-radius: 15px;
     width: 600px;

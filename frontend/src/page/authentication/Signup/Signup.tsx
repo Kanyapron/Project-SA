@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import "./Signup.css"
 
 
+
 function SignUpPages() {
 
   const navigate = useNavigate();

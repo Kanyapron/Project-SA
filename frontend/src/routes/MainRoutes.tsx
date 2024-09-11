@@ -6,7 +6,7 @@ import { RouteObject } from "react-router-dom";
 
 import Loadable from "../components/third-patry/Loadable";
 
-import Home from "../page/Home/home"
+import HomePage from "../page/Home/home"
 
 
 const MainPages = Loadable(lazy(() => import("../page/Home/home")));
@@ -21,7 +21,7 @@ const MainRoutes = (): RouteObject => {
 
     path: "/",
 
-    element: <Home />,
+    element: <HomePage />,
 
     children: [
 
@@ -29,21 +29,13 @@ const MainRoutes = (): RouteObject => {
 
         path: "/",
 
-        element: <MainPages />,
-
-      },
-
-      {
-
-        path: "/Login",
-
         element: <Login />,
 
       },
 
       {
 
-        path: "/SignupPage",
+        path: "/Signup",
 
         element: <SignupPage />,
 
@@ -58,7 +50,7 @@ const MainRoutes = (): RouteObject => {
       },
 
     ],
-
+    
   };
 
 };

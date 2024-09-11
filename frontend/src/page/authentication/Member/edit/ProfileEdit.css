@@ -1,13 +1,4 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
 .profileedit-container {
     display: flex;
     justify-content: center;
@@ -23,7 +14,7 @@ body {
 }
   
 .profileedit-box {
-    background-color: white;
+    background-color: #fdca71;
     padding: 30px;
     border-radius: 15px;
     width: 600px;
@@ -116,18 +107,20 @@ input,textarea {
     margin-top: 10px;
 }
 .update {
-    background-color: #333;
+    background-color: #444;
     color: #fff;
 }
 
-.update:hover {
-    background-color: #444;
+.update.ant-btn:hover{
+    background-color: #333 !important;
+    border-color: #333 !important;
   }
 
 .cancel {
     background-color: #ffa24c;
     color: #fff;
 }
-.cancel:hover {
-    background-color: #ff8c1a;
-}
+.cancel.ant-btn:hover{
+    background-color: #ff8c1a !important;
+    border-color: #ff8c1a !important;
+  }

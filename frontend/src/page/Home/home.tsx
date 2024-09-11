@@ -40,8 +40,8 @@ const HomePage = () => {
   return (<>
     
     <div className="home-main-page">
+    <Navbar/>  
     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-    <Navbar/>
       <div className="banner-section">
         <center>
           <img src={bannerImages[activeBannerIndex]} alt="banner" />
