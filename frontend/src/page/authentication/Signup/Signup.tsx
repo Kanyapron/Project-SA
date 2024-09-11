@@ -8,6 +8,8 @@ import { MemberInterface } from "../../../interfaces/Member";
 
 import logo from "../../../assets/LogoOrange.png";
 
+import { Link } from "react-router-dom";
+
 import "./Signup.css"
 
 
@@ -133,17 +135,17 @@ function SignUpPages() {
 
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <Form.Item>
-                      <Button type="primary" htmlType="submit" className="signuppage-button" style={{ marginBottom: 20 }}>
-                        Sign up
-                      </Button>
-                      <Button type="primary" htmlType="submit" className="cancel-button" style={{ marginBottom: 20 }}>
-                        Cancel
-                      </Button>
-
-                      {/* Or <a onClick={() => navigate("/")}>signin now !</a> */}
-
+                      <center>
+                        <Button type="primary" htmlType="submit" className="signuppage-button" style={{ marginBottom: 20 }}>
+                          Sign up
+                        </Button>
+                        <Link to="/">
+                          <Button type="primary" htmlType="submit" className="cancel-button" style={{ marginBottom: 20 }}>
+                            Cancel
+                          </Button>
+                        </Link>
+                      </center>
                     </Form.Item>
-
                   </Col>
 
                 </Row>

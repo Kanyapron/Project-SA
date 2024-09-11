@@ -67,6 +67,7 @@ function LoginPage(){
 
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
+              
               <Form.Item 
                 label="Email"
                 name="email" 
@@ -80,10 +81,12 @@ function LoginPage(){
                 rules={[{ required: true, message: "Please input your password!" },]}>
                 <Input.Password />
               </Form.Item>
+
               <center>
                 <Button type="primary" htmlType='submit' className="login-button">Log In</Button>
                 <div>Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
               </center>
+
             </Form>
           </Col>
 
