@@ -1,3 +1,12 @@
 .card-signup{
   background-color: #fdca71;
 }
+
+.signuppage-button{
+  margin-left: 25vh;
+  margin-top: 3vh;
+}
+
+.cancel-button{
+  margin-left: 5vh;
+}

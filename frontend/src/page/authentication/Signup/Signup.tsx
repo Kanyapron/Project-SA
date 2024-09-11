@@ -67,11 +67,15 @@ function SignUpPages() {
           <Row align={"middle"} justify={"center"}>
 
             <Col xs={24} sm={24} md={24} lg={10} xl={10}>
+            <center>
               <img alt="logo" src={logo} className="images-logo" />
+            </center>
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <center>
               <h2 className="header">Sign Up</h2>
+            </center>
 
               <Form name="basic" layout="vertical" onFinish={onFinish} autoComplete="off">
 
@@ -121,7 +125,7 @@ function SignUpPages() {
                     <Form.Item
                       label="เบอร์โทรศัพท์"               
                       name="phonenumber"
-                      rules={[{pattern: /^[0-9]{10}$/,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
+                      rules={[{pattern: /^[0-9]{10}$/,required: true,message: "กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
                       <Input />
                     </Form.Item>
                   </Col>
@@ -132,8 +136,8 @@ function SignUpPages() {
                       <Button type="primary" htmlType="submit" className="signuppage-button" style={{ marginBottom: 20 }}>
                         Sign up
                       </Button>
-                      <Button type="primary" htmlType="submit" className="cancle-button" style={{ marginBottom: 20 }}>
-                        Cancle
+                      <Button type="primary" htmlType="submit" className="cancel-button" style={{ marginBottom: 20 }}>
+                        Cancel
                       </Button>
 
                       {/* Or <a onClick={() => navigate("/")}>signin now !</a> */}
