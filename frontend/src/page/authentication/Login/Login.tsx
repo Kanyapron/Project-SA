@@ -2,19 +2,15 @@ import './Login.css';
 import {ArrowBendUpLeft} from 'phosphor-react'
 import logo from'../../../assets/Logo.png'
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input, message, Col} from "antd";
+import { Button, Form, Input, message, Col, Flex, Card, Row} from "antd";
 import { LoginInterface } from '../../../interfaces/Login';
 import {Login} from "../../../services/https"
+import HomeLogin from '../../HomeLogin/homelogin';
 
 
 function LoginPage(){
 
   const navigate = useNavigate();
-
-  const OpenLogin = () => {
-    navigate('/Login');
-  };
-
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -57,38 +53,45 @@ function LoginPage(){
 
     {contextHolder}
 
-      <div className="login-container">
+    <Flex justify="center" align="center" className="login">
+      
+      <Card className="card-login" style={{ width: 600,}}>
 
-      <center>
-        <img src={logo} className="logo" />
+        <Row align={"middle"} justify={"center"} style={{ height: "400px" }}>
 
-          <div className="login-box">
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+          <center>
+            <img alt="logo" style={{ width: "30%" }} src={logo} className="images-logo"/>
+          </center>
+          </Col>
 
-          <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
-
-            <Form.Item 
-              label="Email"
-              name="email" 
-              rules={[{ required: true, message: "Please input your username!" },]}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
+              <Form.Item 
+                label="Email"
+                name="email" 
+                rules={[{ required: true, message: "Please input your email!" },]}>
                 <Input/>
-            </Form.Item>
+              </Form.Item>
 
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[{ required: true, message: "Please input your password!" },]}>
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[{ required: true, message: "Please input your password!" },]}>
                 <Input.Password />
-            </Form.Item>
+              </Form.Item>
+              <center>
+                <Button type="primary" htmlType='submit' className="login-button">Log In</Button>
+                <div>Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
+              </center>
+            </Form>
+          </Col>
 
-            <Button type="primary" htmlType='submit' className="login-button" onClick={OpenLogin}>Log In</Button>
-            <div>Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
-          </Form>
+        </Row>
 
-          </div>
+      </Card>
 
-        </center>
-        
-      </div>
+    </Flex>
   </>)
 }
 

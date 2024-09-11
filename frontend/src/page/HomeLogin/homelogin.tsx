@@ -13,7 +13,7 @@ import icons4 from "../../assets/icons/electronics.png";
 import icons5 from "../../assets/icons/shirt.png";
 import icons6 from "../../assets/icons/skirt.png";
 import icons7 from "../../assets/icons/pants.png";
-import "../HomeLogin/homelogin.css";
+import "../Home/home.css";
 
 
 

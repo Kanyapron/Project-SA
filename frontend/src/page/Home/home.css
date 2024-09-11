@@ -1,4 +1,4 @@
-body{
+.home-main-page{
   background: white;
 }
 
@@ -14,7 +14,7 @@ body{
   display: flex;
   justify-content: center;
   background-color: #EBD96B;
-  width: 1300px;
+  width: auto;
   height: 100px;
   margin-top: 20px;
 }

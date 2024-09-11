@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./page/Component_home/Navbar"
 import Home from "./page/Home/home"; // นำเข้าคอมโพเนนต์ Test
 import LoginPage from "./page/authentication/Login/Login";
@@ -8,7 +8,7 @@ import HomePage from "./page/Home/home";
 import ProfileEdit from "./page/authentication/Member/edit/ProfileEdit";
 import ProfileEditTest from "./page/authentication/Member/edit/ProfileEdit";
 import ConfigRoutes from "./routes";
-import { BrowserRouter as Router } from "react-router-dom";
+import HomeLogin from "./page/HomeLogin/homelogin";
 
 
 const App: React.FC = () => {
@@ -16,8 +16,10 @@ const App: React.FC = () => {
     <Router>
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Login" element={<LoginPage />} />
+        <Route path="/SignupPage" element={<SignupPage />} />
+        <Route path="/HomeLogin" element={<HomeLogin />} />
       </Routes>
 
     </Router>

@@ -1,100 +1,164 @@
-import "./Signup.css";
-import { ArrowBendUpLeft } from "phosphor-react";
+import {Button,Card,Form,Input,message,Flex,Row,Col,InputNumber,DatePicker,Select,} from "antd";
+
+import { useNavigate } from "react-router-dom";
+
+import { CreateMember } from "../../../services/https";
+
+import { MemberInterface } from "../../../interfaces/Member";
+
 import logo from "../../../assets/LogoOrange.png";
 
-import {Button,Form,Input,message,} from "antd";
-import { useNavigate } from "react-router-dom";
-import { CreateMember } from "../../../services/https";
-import { MemberInterface } from "../../../interfaces/Member";
-import Icon from "@ant-design/icons/lib/components/Icon";
+import "./Signup.css"
 
-function SignupPage() {
+
+function SignUpPages() {
 
   const navigate = useNavigate();
 
-  const OpenSignup = () => {
-    navigate('/Signup');
-  };
-  
   const [messageApi, contextHolder] = message.useMessage();
-  
+
+
   const onFinish = async (values: MemberInterface) => {
-  
+
     let res = await CreateMember(values);
-  
-      if (res.status == 201) {
-        messageApi.open({
-          type: "success",
-          content: res.data.message,});
-  
-        setTimeout(function () {
-          navigate("/HomePage");
-        }, 2000);
-  
-      } else {
-        messageApi.open({  
-          type: "error",
-          content: res.data.error,
-        });
-  
-      }
-  
-    };
-  
-  
+
+
+    if (res.status == 201) {
+
+      messageApi.open({
+
+        type: "success",
+
+        content: res.data.message,
+
+      });
+
+      setTimeout(function () {
+
+        navigate("/");
+
+      }, 2000);
+
+    } else {
+
+      messageApi.open({
+
+        type: "error",
+
+        content: res.data.error,
+
+      });
+
+    }
+
+  };
+
+
   return (
+
     <>
+
       {contextHolder}
 
-      <div className="signup-container">
+      <Flex justify="center" align="center" className="sign-up">
 
-        <div className="back-arrow">
-          <a onClick={() => navigate("/")}><ArrowBendUpLeft size={32} /></a>
-        </div>
+        <Card className="card-signup" style={{ width: 600 }}>
 
-        <div className="signup-box">
+          <Row align={"middle"} justify={"center"}>
 
-          <img src={logo} className="logo" alt="Logo" />
+            <Col xs={24} sm={24} md={24} lg={10} xl={10}>
+              <img alt="logo" src={logo} className="images-logo" />
+            </Col>
 
-          <h2>SIGN UP</h2>
+            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+              <h2 className="header">Sign Up</h2>
 
-          <Form name="basic" onFinish={onFinish} autoComplete="off" layout="vertical">
+              <Form name="basic" layout="vertical" onFinish={onFinish} autoComplete="off">
 
-            <Form.Item label="ชื่อจริง" name="first_name" rules={[{required: true,message: "กรุณากรอกชื่อ !",},]}>
-              <Input />
-            </Form.Item>
+                <Row gutter={[16, 0]} align={"middle"} justify={"center"}>
 
-            <Form.Item label="นามสกุล" name="last_name" rules={[{required: true,message: "กรุณากรอกนามสกุล !",},]}>
-              <Input />
-            </Form.Item>
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <Form.Item
+                      label="ชื่อจริง"
+                      name="first_name"
+                      rules={[{required: true,message: "กรุณากรอกชื่อ !",},]}>
+                      <Input />
+                    </Form.Item>
+                  </Col>
 
-            <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{required: true,message: "กรุณากรอกชื่อผู้ใช้ !",},]}>
-              <Input />
-            </Form.Item>
-          
-            <Form.Item label="เบอร์โทรศัพท์" name="phonenumber" rules={[{pattern: /^[0-9]{10}$/,required: true,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
-              <Input />
-            </Form.Item>
 
-            <Form.Item label="อีเมล" name="email" rules={[{type: "email",message: "รูปแบบอีเมลไม่ถูกต้อง !",},{required: true,message: "กรุณากรอกอีเมล !",},]}>
-              <Input />
-            </Form.Item>
-            
-            <Form.Item label="รหัสผ่าน" name="password" rules={[{required: true,message: "กรุณากรอกรหัสผ่าน !",},]}>
-              <Input.Password />
-            </Form.Item>
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <Form.Item
+                      label="นามกสุล"
+                      name="last_name"
+                      rules={[{required: true,message: "กรุณากรอกนามสกุล !",},]}>
+                      <Input />
+                    </Form.Item>
+                  </Col>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit" className="register">REGISTER</Button>
-            </Form.Item>
 
-          </Form>
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <Form.Item
+                      label="อีเมล"
+                      name="email"
+                      rules={[{type: "email",message: "รูปแบบอีเมลไม่ถูกต้อง !",},{required: true,message: "กรุณากรอกอีเมล !",},]}>
+                      <Input />
+                    </Form.Item>
+                  </Col>
 
-        </div>
 
-      </div>
+                  <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                    <Form.Item
+                      label="รหัสผ่าน"
+                      name="password"
+                      rules={[{required: true,message: "กรุณากรอกรหัสผ่าน !",},]}>
+                      <Input.Password />
+                    </Form.Item>
+                  </Col>
+
+
+                  <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+                    <Form.Item
+                      label="เบอร์โทรศัพท์"               
+                      name="phonenumber"
+                      rules={[{pattern: /^[0-9]{10}$/,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
+                      <Input />
+                    </Form.Item>
+                  </Col>
+
+
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit" className="signuppage-button" style={{ marginBottom: 20 }}>
+                        Sign up
+                      </Button>
+                      <Button type="primary" htmlType="submit" className="cancle-button" style={{ marginBottom: 20 }}>
+                        Cancle
+                      </Button>
+
+                      {/* Or <a onClick={() => navigate("/")}>signin now !</a> */}
+
+                    </Form.Item>
+
+                  </Col>
+
+                </Row>
+
+              </Form>
+
+            </Col>
+
+          </Row>
+
+        </Card>
+
+      </Flex>
+
     </>
+
   );
+
 }
 
-export default SignupPage;
+
+export default SignUpPages;

@@ -13,7 +13,7 @@ const MainPages = Loadable(lazy(() => import("../page/Home/home")));
 
 const Login = Loadable(lazy(() => import("../page/authentication/Login/Login")));
 
-const Signup = Loadable(lazy(() => import("../page/authentication/Signup/Signup")));
+const SignupPage = Loadable(lazy(() => import("../page/authentication/Signup/Signup")));
 
 const MainRoutes = (): RouteObject => {
 
@@ -43,9 +43,9 @@ const MainRoutes = (): RouteObject => {
 
       {
 
-        path: "/Signup",
+        path: "/SignupPage",
 
-        element: <Signup />,
+        element: <SignupPage />,
 
       },
 

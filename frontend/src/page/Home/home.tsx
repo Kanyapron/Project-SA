@@ -14,11 +14,10 @@ import categoryIcon5 from "../../assets/icons/shirt.png";
 import categoryIcon6 from "../../assets/icons/skirt.png";
 import categoryIcon7 from "../../assets/icons/pants.png";
 
-import { useNavigate } from "react-router-dom";
 
 import "./home.css";
 import Navbar from "../Component_home/Navbar";
-import { Button, Card, Form, Input, message, Flex, Row, Col } from "antd";
+import { Col } from "antd";
 
 
 const bannerImages = [banner1, banner2, banner3];
@@ -27,7 +26,6 @@ const HomePage = () => {
 
   const [activeBannerIndex, setActiveBannerIndex] = useState(0);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,7 +39,7 @@ const HomePage = () => {
 
   return (<>
     
-    <div className="main-page">
+    <div className="home-main-page">
     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
     <Navbar/>
       <div className="banner-section">
