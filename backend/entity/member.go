@@ -13,5 +13,6 @@ type Member struct {
 	LastName   string
 	PhoneNumber string
 	Address    string
-	ProfilePic string
+	ProfilePic string `gorm:"type:longtext"`
+
 }

@@ -63,7 +63,7 @@ const App: React.FC = () => {
 
       <Route path="/Profile/ProfileEdit:id" element={<ProfileEdit />} /> */}
 
-      <LoginPage />
+      <Profile />
 
     </Router>
 

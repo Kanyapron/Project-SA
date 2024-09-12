@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/Kanyapron/config"
-
 	"github.com/Kanyapron/entity"
 )
 
@@ -100,6 +99,8 @@ func UpdateMember(c *gin.Context) { // อัพเดทข้อมูลส�
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
 		return
 	}
+
+	result = db.Save(&member)
 
 	if err := db.Model(&member).Updates(member).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update member"})

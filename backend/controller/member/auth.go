@@ -5,13 +5,14 @@ import (
 
    "errors"
    "net/http"
+   
    "github.com/gin-gonic/gin"
    "golang.org/x/crypto/bcrypt"
    "gorm.io/gorm"
 
    "github.com/Kanyapron/config"
    "github.com/Kanyapron/entity"
-   "github.com/Kanyapron/service"
+   "github.com/Kanyapron/services"
 
 )
 
