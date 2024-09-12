@@ -1,34 +1,20 @@
-// โครงสร้างหน้าหลัก
-
 .card-profile{
   background-color: #fdca71;
-  }
+  margin-top: 5vh;
+}
   
-  // ส่วนหัวของโปรไฟล์
-  .back-arrow {
-    position: absolute;
-    bottom: 10vh;
-    left: 94vh;
-    cursor: pointer;
+
+.back-arrow {
+  position: absolute;
+  bottom: 10vh;
+  left: 94vh;
+  cursor: pointer;
 }
   
 .images-logo {
   margin-top: -2vh;
   margin-left: -2vh;
 }
-
-
-// h1 {
-//     text-align: center;
-//     font-size: 30px;
-//     color: #333;
-//     font-weight: bold;
-//     margin-bottom: 45px;
-//     margin-top: -300px;
-    
-    
-// }
-  
   
   // ส่วนเนื้อหาของโปรไฟล์
   .profile-content {
@@ -56,8 +42,8 @@
       }
   
       .edit-button {
-        background-color: #333;
-        color: #fff;
+        background-color: #ffa24c;
+        color: #000000;
         padding: 8px 16px;
         font-size: 14px;
         border: none;
@@ -72,50 +58,32 @@
         }
   
         &:hover {
-          background-color: #444;
+          background-color: #ff8c1a;
         }
       }
     }
   
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-  
-      .form-group {
-        display: flex;
-        // flex-direction: ;
-        margin-bottom: 20px;
-  
-        label {
-        font-weight: bold;
-          margin-bottom: 10px;
-        }
-      }
-  
-
-    }
-  }
-  .uploaded-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .profile-info-group{
-    margin-bottom: 100ivh;
   }
 
-.edit-info-button{
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: center;
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.groupinfo{
+  margin-left: 15vh;
+  margin-top: -85vh;
+}
+
+.edit-imf-button{
+  margin-top: 10vh;
+  margin-right: 5vh;
+  background-color: #444;
+}
+
+.edit-imf-button.ant-btn:hover{
+  background-color: #333 !important;
+  border-color: #333 !important;
 }

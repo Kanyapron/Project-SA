@@ -9,9 +9,7 @@ import Loadable from "../components/third-patry/Loadable";
 import HomePage from "../page/Home/home"
 
 
-const MainPages = Loadable(lazy(() => import("../page/Home/home")));
-
-const Login = Loadable(lazy(() => import("../page/authentication/Login/Login")));
+const MainPages = Loadable(lazy(() => import("../page/authentication/Login/Login")));
 
 const SignupPage = Loadable(lazy(() => import("../page/authentication/Signup/Signup")));
 
@@ -29,7 +27,7 @@ const MainRoutes = (): RouteObject => {
 
         path: "/",
 
-        element: <Login />,
+        element: <MainPages />,
 
       },
 

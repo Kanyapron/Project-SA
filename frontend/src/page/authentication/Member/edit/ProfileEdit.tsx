@@ -98,9 +98,7 @@ function ProfileEdit (){
     <div className="profileedit-container">
       
       <div className="profileedit-box">
-        <div className="back-arrow">
-            <ArrowBendUpLeft size={32} />
-        </div>
+        
         <img src={logo} className="logo" alt="Logo" />
         <h2>PROFILE EDIT</h2>
                                                                               {/* autoComplete="off" */}
@@ -135,6 +133,7 @@ function ProfileEdit (){
           
           <center>
             <Button type="primary" htmlType="submit" className="btn update">อัปเดต</Button>
+
             <Link to="/Profile">
             <Button type="primary" htmlType="button" className="btn cancel">ยกเลิก</Button>
             </Link>

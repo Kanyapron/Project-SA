@@ -28,7 +28,6 @@ function LoginPage(){
  
       localStorage.setItem("page", "HomLogin"); // หน้าที่จะเปลี่ยนไปหลังจากเข้าสู่ระบบ
 
-
       localStorage.setItem("token_type", res.data.token_type); // ประเภทของ token
 
       localStorage.setItem("token", res.data.token); // token ที่ได้รับจาก API
@@ -37,7 +36,7 @@ function LoginPage(){
 
       setTimeout(() => { 
 
-        location.href = "/HomeLogin";
+        location.href = "/";
 
       }, 2000);//เพื่อหน่วงเวลา 2 วินาทีก่อนจะเปลี่ยนเส้นทางไปที่หน้า /HomeLogin
 

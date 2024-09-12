@@ -6,7 +6,7 @@ import Loadable from "../components/third-patry/Loadable";
 
 
 
-const HomePage = Loadable(lazy(() => import("../page/Home/home")));
+const MainPages = Loadable(lazy(() => import("../page/authentication/Login/Login")));
 
 const HomeLogin = Loadable(lazy(() => import("../page/HomeLogin/homelogin")));
 
@@ -21,7 +21,7 @@ const MemberRoutes = (isLoggedIn : boolean): RouteObject => {
 
     path: "/Login",
 
-    element: isLoggedIn ? <HomeLogin /> : <HomePage />,
+    element: isLoggedIn ? <HomeLogin /> : <MainPages />,
 
     children: [
 
@@ -29,7 +29,7 @@ const MemberRoutes = (isLoggedIn : boolean): RouteObject => {
 
         path: "/",
 
-        element: <HomeLogin />,
+        element: <Profile />,
 
       },
 
