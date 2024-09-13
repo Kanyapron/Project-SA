@@ -97,7 +97,7 @@ function Profile() {
 
 
   useEffect(() => {
-    GetMember();
+    GetMember(); // ดึงข้อมูลผู้ใช้เมื่อหน้าโหลด
   }, []);
 
   const Logout = () => {
