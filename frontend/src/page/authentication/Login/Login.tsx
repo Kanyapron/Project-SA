@@ -1,6 +1,6 @@
 import './Login.css';
 import {ArrowBendUpLeft} from 'phosphor-react'
-import logo from'../../../assets/Logo.png'
+import logo from'../../../assets/LogoOrange.png'
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Input, message, Col, Flex, Card, Row} from "antd";
 import { LoginInterface } from '../../../interfaces/Login';
@@ -82,8 +82,9 @@ function LoginPage(){
               </Form.Item>
 
               <center>
-                <Button type="primary" htmlType='submit' className="login-button">Log In</Button>
-                <div>Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
+                <Button type="primary" htmlType='submit' className="loginpage-button" style={{width:"20vh"}}>Log In</Button>
+                <Button type="primary" htmlType='submit' className="cancelloginpage-button" style={{width:"20vh"}} onClick={() => navigate("/")}>Cancel</Button>
+                <div className="signup-now">Or <a onClick={() => navigate("/SignupPage")}>signup now !</a></div>
               </center>
 
             </Form>

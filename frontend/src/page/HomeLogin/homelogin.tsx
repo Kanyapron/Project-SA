@@ -14,6 +14,7 @@ import icons5 from "../../assets/icons/shirt.png";
 import icons6 from "../../assets/icons/skirt.png";
 import icons7 from "../../assets/icons/pants.png";
 import "../Home/home.css";
+import NavbarLogin from "./NavbarLogin";
 
 
 
@@ -32,8 +33,10 @@ const HomeLogin = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return (
+  return (<>
+
     <div className="home">
+      <NavbarLogin/>
       <div className="box-page">
         <center>
           <img src={imageArray[currentImageIndex]} alt="brandner" />
@@ -59,9 +62,9 @@ const HomeLogin = () => {
         ))}
       </div>
 
-
     </div>
-  );
+
+  </>);
 };
 
 export default HomeLogin;

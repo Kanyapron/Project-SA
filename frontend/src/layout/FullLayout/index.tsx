@@ -10,9 +10,9 @@ import { Breadcrumb, Layout, Menu, theme, Button, message } from "antd";
 
 import logo from "../../assets/LogoOrange.png";
 
-import Profile from "../../pages/authentication/Member";
+import Profile from "../../page/authentication/Member/Profile";
 
-import ProfileEdit from "../../pages/customer/authentication/edit";
+import ProfileEdit from "../../page/authentication/Member/edit/ProfileEdit";
 
 
 const { Header, Content, Footer, Sider } = Layout;

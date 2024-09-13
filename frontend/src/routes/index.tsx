@@ -14,11 +14,11 @@ function ConfigRoutes() {
 
   if (isLoggedIn) {
 
-    routes = [MemberRoutes(isLoggedIn), MainRoutes()];
+    routes = [...MemberRoutes(isLoggedIn), ...MainRoutes()];
 
   } else {
 
-    routes = [MainRoutes()];
+    routes = MainRoutes();
 
   }
 

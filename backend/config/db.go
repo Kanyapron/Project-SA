@@ -6,6 +6,7 @@ import (
 	"github.com/Kanyapron/entity"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var db *gorm.DB
@@ -24,10 +25,12 @@ func ConnectionDB() {
 }
 
 func SetupDatabase() {
+
+	if db == nil {
+		panic("database not connected")
+	}
 	
-	db.AutoMigrate(
-	    &entity.Member{},
-	)
+	db.AutoMigrate(&entity.Member{},)
 
 	User := &entity.Member{
 		Username: "Varoniga",

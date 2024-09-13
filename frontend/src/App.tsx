@@ -8,6 +8,9 @@ import "./App.css";
 import ProfileEdit from "./page/authentication/Member/edit/ProfileEdit";
 import Profile from "./page/authentication/Member/Profile";
 import HomePage from "./page/Home/home";
+import LoginPage from "./page/authentication/Login/Login";
+import SignUpPages from "./page/authentication/Signup/Signup";
+import HomeLogin from "./page/HomeLogin/homelogin";
 
 
 const App: React.FC = () => {
@@ -15,11 +18,8 @@ const App: React.FC = () => {
   return (
 
     <Router>
-
-      <Route path="/" element={<Dashboard />} />
-
-      <Route path="/" element={<HomePage/>}/>
-
+      <ConfigRoutes/>
+      {/* <Profile/> */}
     </Router>
 
   );

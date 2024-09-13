@@ -3,15 +3,29 @@ import '../../../page/authentication/Member/Profile.scss';
 import { FaEdit } from 'react-icons/fa';
 import { ArrowBendUpLeft } from 'phosphor-react';
 import logo from '../../../assets/LogoOrange.png';
-import { Button, Form, Input, message, Col, Flex, Card, Row} from "antd";
+import { Button, Form, Input, message, Col, Flex, Card, Row, Table} from "antd";
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { MemberInterface } from '../../../interfaces/Member';
 import { GetMember } from '../../../services/https';
 import type { ColumnsType } from "antd/es/table";
 import ProfileEdit from './edit/ProfileEdit';
 
-
 function Profile() {
+
+  const navigate = useNavigate();
+
+  interface DataType {
+
+    key: string;
+  
+    name: string;
+  
+    email: string;
+  
+    phonenumber: string[];
+  
+  }
+
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -35,7 +49,7 @@ function Profile() {
     fileInputRef.current?.click();
   };
 
-  const columns: ColumnsType<MemberInterface> = [
+  const columns: ColumnsType<DataType> = [
     { 
       title: "ชื่อผู้ใช้",
       dataIndex: "Username",
@@ -51,7 +65,9 @@ function Profile() {
       dataIndex:"PhoneNumber",
       key:"PhoneNumber",
     }
-  ]
+  ];
+
+  const data: DataType[] = [];
 
   const GetMember = async () => {
 
@@ -84,6 +100,15 @@ function Profile() {
     GetMember();
   }, []);
 
+  const Logout = () => {
+    localStorage.clear();
+    messageApi.success("Logout successful");
+    setTimeout(() => {
+      location.href = "/";
+    }, 2000);
+  };
+
+
   return (<>
     {contextHolder}
 
@@ -98,7 +123,7 @@ function Profile() {
           </Col>
 
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <div className="back-arrow">
+            <div className="back-arrow" onClick={() => navigate("/HomeLogin")}>
               <ArrowBendUpLeft size={32} />
             </div>
           </Col>
@@ -149,6 +174,7 @@ function Profile() {
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Form.Item>
                 <label className="username">ชื่อผู้ใช้</label>
+                <Table columns={columns} dataSource={data} />
               </Form.Item>
             </Col> 
 
@@ -165,10 +191,16 @@ function Profile() {
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Button type="primary" htmlType="submit" className="edit-imf-button" style={{ marginBottom: 20 }} onClick={() => navigate(`/Profile/ProfileEdit/${record.ID}`)}
-                >
-                  แก้ไขข้อมูลส่วนตัว
-                </Button>
+                <Link to ="/Profile/ProfileEdit/:id">
+                  <Button type="primary" htmlType="submit" className="edit-imf-button" style={{ marginBottom: 20 }} onClick={() => navigate(`/Profile/ProfileEdit/${record.ID}`)}>
+                    แก้ไขข้อมูลส่วนตัว
+                  </Button>
+                </Link>
+                <div>
+                  <Button type="primary" htmlType="submit" className="logoutprofile-button" style={{ marginBottom: 20 }} onClick={Logout}>
+                    Log out
+                  </Button>
+                </div>
             </Col>
 
           </div>
@@ -181,10 +213,10 @@ function Profile() {
 
     </Flex>
 
-    <Routes>
+    {/* <Routes>
       <Route path="/Profile" element={<Profile />} />
       <Route path="/Profile/ProfileEdit/:id" element={<ProfileEdit />} />
-    </Routes>
+    </Routes> */}
 
   
 

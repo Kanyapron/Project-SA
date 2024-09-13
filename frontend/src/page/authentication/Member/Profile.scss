@@ -1,12 +1,12 @@
 .card-profile{
-  background-color: #fdca71;
+  background-color: #e2dfdf;
   margin-top: 5vh;
 }
   
 
 .back-arrow {
   position: absolute;
-  bottom: 10vh;
+  margin-top: -15vh;
   left: 94vh;
   cursor: pointer;
 }
@@ -78,12 +78,25 @@
 }
 
 .edit-imf-button{
-  margin-top: 10vh;
   margin-right: 5vh;
-  background-color: #444;
+  background-color: #ffa24c;
+  color: #000000;
+
 }
 
 .edit-imf-button.ant-btn:hover{
+  background-color: #ff8c1a !important;
+  border-color: #ff8c1a !important;
+  color: #000000 !important;
+
+}
+
+.logoutprofile-button{
+  background-color: #444;
+  margin-left: 5vh;
+}
+
+.logoutprofile-button.ant-btn:hover{
   background-color: #333 !important;
   border-color: #333 !important;
 }
