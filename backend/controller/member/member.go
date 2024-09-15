@@ -109,3 +109,41 @@ func UpdateMember(c *gin.Context) { // อัพเดทข้อมูลส�
 
 	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
 }
+
+func GetProfileByEmail(c *gin.Context) {
+    // รับ email จาก query หรือ body
+    email := c.Param("email")
+
+    // ตรวจสอบว่าได้รับ email หรือไม่
+    if email == "" {
+        c.JSON(http.StatusBadRequest, gin.H{"error": "Email is required"})
+        return
+    }
+
+	// ตรวจสอบการยืนยันตัวตน (Authorization)
+    authHeader := c.GetHeader("Authorization")
+    if authHeader == "" {
+        c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+        return
+    }
+
+    var member entity.Member
+    db := config.DB()
+
+    // ดึงข้อมูลจากฐานข้อมูลโดยใช้ email
+    if err := db.Where("email = ?", email).First(&member).Error; err != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": "Member not found"})
+        return
+    }
+
+    // ส่งข้อมูลไปยัง Frontend
+    c.JSON(http.StatusOK, gin.H{
+        "username":    member.Username,
+        "email":       member.Email,
+        "phoneNumber": member.PhoneNumber,
+		"profilePic":  member.ProfilePic, // เพิ่มข้อมูลโปรไฟล์ (ถ้าต้องการ)
+
+    })
+}
+
+

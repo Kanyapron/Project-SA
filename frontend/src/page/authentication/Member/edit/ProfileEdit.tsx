@@ -105,27 +105,27 @@ function ProfileEdit (){
         <Divider />                                                                     
         <Form name="basic" form={form} layout="vertical" onFinish={onFinish}> 
 
-          <Form.Item label="ชื่อจริง" name="first_name" rules={[{required: true,message: "กรุณากรอกชื่อ !",},]}>
+          <Form.Item label="ชื่อจริง" name="first_name">
             <Input />
           </Form.Item>
 
-          <Form.Item label="นามสกุล" name="last_name" rules={[{required: true,message: "กรุณากรอกนามสกุล !",},]}>
+          <Form.Item label="นามสกุล" name="last_name">
             <Input />
           </Form.Item>
 
-          <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{required: true,message: "กรุณากรอกชื่อผู้ใช้ !",},]}>
+          <Form.Item label="ชื่อผู้ใช้" name="username">
             <Input />
           </Form.Item>
 
-          <Form.Item label="เบอร์โทรศัพท์" name="phonenumber" rules={[{pattern: /^[0-9]{10}$/,required: true,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
+          <Form.Item label="เบอร์โทรศัพท์" name="phonenumber">
             <Input />
           </Form.Item>
 
-          <Form.Item label="อีเมล" name="email" rules={[{type: "email",message: "รูปแบบอีเมลไม่ถูกต้อง !",},{required: true,message: "กรุณากรอกอีเมล !",},]}>
+          <Form.Item label="อีเมล" name="email">
             <Input />
           </Form.Item>
 
-          <Form.Item label="ที่อยู่" name="address" rules={[{required: true,message: "กรุณากรอกที่อยู่ !",},]}>
+          <Form.Item label="ที่อยู่" name="address">
             <Input />
           </Form.Item>
 

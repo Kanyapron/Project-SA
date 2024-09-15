@@ -6,28 +6,19 @@ import logo from '../../../assets/LogoOrange.png';
 import { Button, Form, Input, message, Col, Flex, Card, Row, Table} from "antd";
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { MemberInterface } from '../../../interfaces/Member';
-import { GetMember } from '../../../services/https';
-import type { ColumnsType } from "antd/es/table";
-import ProfileEdit from './edit/ProfileEdit';
+import {GetMemberByEmail} from '../../../services/https'
 
 function Profile() {
 
   const navigate = useNavigate();
 
-  interface DataType {
-
-    key: string;
-  
-    name: string;
-  
-    email: string;
-  
-    phonenumber: string[];
-  
-  }
-
   const [profileImage, setProfileImage] = useState<string | null>(null);
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const [users, setUsers] = useState<MemberInterface | null>(null);
 
   // กำหนดประเภทของ e ให้เป็น React.ChangeEvent<HTMLInputElement>
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,63 +32,54 @@ function Profile() {
     }
   };
 
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const [users, setUsers] = useState<MemberInterface[]>([]);
-
   const handleEditClick = () => {
     fileInputRef.current?.click();
   };
 
-  const columns: ColumnsType<DataType> = [
-    { 
-      title: "ชื่อผู้ใช้",
-      dataIndex: "Username",
-      key: "Username",
-    },
-    {
-      title:"Email",
-      dataIndex:"Email",
-      key:"Email",
-    },
-    {
-      title:"เบอร์โทรศัพท์",
-      dataIndex:"PhoneNumber",
-      key:"PhoneNumber",
-    }
-  ];
+  // const GetMember = async () => {
 
-  const data: DataType[] = [];
-
-  const GetMember = async () => {
-
-    let res = await GetMember();
+  //   let res = await GetMember();
 
    
 
-    if (res.status == 200) {
+  //   if (res.status == 200) {
 
-      setUsers(res.data);
+  //     setUsers(res.data);
 
-    } else {
+  //   } else {
 
-      setUsers([]);
+  //     setUsers([]);
 
-      messageApi.open({
+  //     messageApi.open({
 
-        type: "error",
+  //       type: "error",
 
-        content: res.data.error,
+  //       content: res.data.error,
 
-      });
+  //     });
 
+  //   }
+
+  // };
+
+  const GetUserProfile = async () => {
+    const email = localStorage.getItem('userEmail');
+    if (!email) {
+      messageApi.error("Email not found");
+      return;
     }
 
+    const res = await GetMemberByEmail(email);
+
+    if (res.status === 200) {
+      setUsers(res.data);
+    } else {
+      messageApi.error(res.data.error || "Failed to fetch user data");
+    }
   };
 
-
   useEffect(() => {
-    GetMember(); // ดึงข้อมูลผู้ใช้เมื่อหน้าโหลด
+    GetUserProfile(); // ดึงข้อมูลผู้ใช้เมื่อหน้าโหลด
   }, []);
 
   const Logout = () => {
@@ -173,20 +155,19 @@ function Profile() {
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Form.Item>
-                <label className="username">ชื่อผู้ใช้</label>
-                <Table columns={columns} dataSource={data} />
+                <label className="username">Username : {users?.Username}</label>
               </Form.Item>
             </Col> 
 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Form.Item>
-                <label className="email">Email</label>
+                <label className="email">Email : {users?.Email}</label>
               </Form.Item>
             </Col>
                 
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <Form.Item>
-                <label className="phonenumber">เบอร์โทรศัพท์</label>
+                <label className="phonenumber">Phone Number : {users?.PhoneNumber}</label>
               </Form.Item>
             </Col>
 

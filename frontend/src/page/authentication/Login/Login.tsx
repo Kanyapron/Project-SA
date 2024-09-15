@@ -19,9 +19,9 @@ function LoginPage(){
 
     let res = await Login(values);
 
+    console.log(res); // เพิ่มเพื่อดูข้อมูลที่ได้รับจาก API
 
     if (res.status == 200) {
-
       messageApi.success("Log-in successful"); 
 
       localStorage.setItem("isLogin", "true"); // สถานะการเข้าสู่ระบบ
@@ -33,6 +33,14 @@ function LoginPage(){
       localStorage.setItem("token", res.data.token); // token ที่ได้รับจาก API
 
       localStorage.setItem("id", res.data.id); // user ID
+
+      localStorage.setItem("userEmail", res.data.email); // เก็บ email ใน localStorage
+
+      if (res.data.email) {
+        localStorage.setItem("userEmail", res.data.email); // เก็บ email ใน localStorage
+      } else {
+        messageApi.error("Email not found in response");
+      }
 
       setTimeout(() => { 
 
@@ -47,6 +55,9 @@ function LoginPage(){
 
     }
   };
+
+  localStorage.getItem("userEmail");
+
 
   return (<>
 

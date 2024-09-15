@@ -38,15 +38,12 @@ async function Login(data: LoginInterface) {
 
 
 async function GetMember() {
+  const email = localStorage.getItem('userEmail'); // หรือวิธีการอื่น ๆ ที่ใช้ดึง email
+  if (!email) {
+    throw new Error('Email not found in localStorage');
+  }
 
-  return await axios
-
-    .get(`${apiUrl}/users`, requestOptions)
-
-    .then((res) => res)
-
-    .catch((e) => e.response);
-
+  return await GetMemberByEmail(email);
 }
 
 
@@ -101,6 +98,14 @@ async function CreateMember(data: MemberInterface) {
 
 }
 
+async function GetMemberByEmail(email: string) {
+  return await axios
+    .get(`${apiUrl}/user/email/${email}`, requestOptions)
+    .then((res) => res)
+    .catch((e) => e.response);
+}
+
+
 
 export {
   Login,
@@ -115,4 +120,7 @@ export {
 
   CreateMember,
 
+  GetMemberByEmail
+
 };
+

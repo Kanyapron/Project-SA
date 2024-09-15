@@ -30,6 +30,8 @@ func main() {
 		router.POST("/member", member.CreateMember)
 		router.PATCH("/member/:id", member.UpdateMember)
 		router.DELETE("/member/:id", member.DeleteMember)
+		router.GET("/member/email/:email", member.GetProfileByEmail) // สำหรับดึงข้อมูลสมาชิกตามอีเมล
+
 	}
 
 	r.GET("/", func(c *gin.Context) {
