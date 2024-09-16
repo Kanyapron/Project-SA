@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/Kanyapron/config"
 	"github.com/Kanyapron/controller/member"
-	"github.com/Kanyapron/middlewares"
+	//"github.com/Kanyapron/middlewares"
 )
 
 const PORT = "8000"
@@ -24,7 +24,7 @@ func main() {
 
 	router := r.Group("/")
 	{
-		router.Use(middlewares.Authorizes())
+		//router.Use(middlewares.Authorizes())
 		
 		router.GET("/member/:id", member.GetMember)
 		router.POST("/member", member.CreateMember)

@@ -1,154 +1,466 @@
-import { useEffect } from "react";
-import './ProfileEdit.css';
-import { ArrowBendUpLeft } from 'phosphor-react';
-import logo from '../../../../assets/LogoOrange.png';
+// import { useEffect } from "react";
+// import './ProfileEdit.css';
+// import { ArrowBendUpLeft } from 'phosphor-react';
+// import logo from '../../../../assets/LogoOrange.png';
 
-import {Space,Button,Form,Input,message,Divider,} from "antd";
-import { MemberInterface } from "../../../../interfaces/Member";
-import { GetMemberById, UpdateMemberById } from "../../../../services/https/index";
-import { useNavigate, Link, useParams } from "react-router-dom";
+// import {Space,Button,Form,Input,message,Divider,} from "antd";
+// import { MemberInterface } from "../../../../interfaces/Member";
+// import { GetMemberById, UpdateMemberById } from "../../../../services/https/index";
+// import { useNavigate, Link, useParams } from "react-router-dom";
 
-function ProfileEditTest (){
+// function ProfileEditTest (){
 
-//   const navigate = useNavigate();
+// //   const navigate = useNavigate();
 
-//   const { id } = useParams<{ id: any }>();
+// //   const { id } = useParams<{ id: any }>();
 
-//   const [messageApi, contextHolder] = message.useMessage();
+// //   const [messageApi, contextHolder] = message.useMessage();
 
-   const [form] = Form.useForm();
+//    const [form] = Form.useForm();
 
-//   const getUserById = async (id: string) => {
+// //   const getUserById = async (id: string) => {
 
-//     let res = await GetMemberById(id);
+// //     let res = await GetMemberById(id);
 
-//     if (res.status == 200) {
+// //     if (res.status == 200) {
 
-//       form.setFieldsValue({
+// //       form.setFieldsValue({
 
-//         first_name: res.data.first_name,
+// //         first_name: res.data.first_name,
 
-//         last_name: res.data.last_name,
+// //         last_name: res.data.last_name,
 
-//         username: res.data.username,
+// //         username: res.data.username,
 
-//         phonenumber: res.data.phonenumber,
+// //         phonenumber: res.data.phonenumber,
 
-//         email: res.data.email,
+// //         email: res.data.email,
 
-//         address: res.data.address,
+// //         address: res.data.address,
 
-//       });
+// //       });
 
-//     } else {
+// //     } else {
 
-//       messageApi.open({
+// //       messageApi.open({
 
-//         type: "error",
+// //         type: "error",
 
-//         content: "ไม่พบข้อมูลผู้ใช้",
+// //         content: "ไม่พบข้อมูลผู้ใช้",
 
-//       });
+// //       });
 
-//       setTimeout(() => {
+// //       setTimeout(() => {
 
-//         navigate("/Profile");
+// //         navigate("/Profile");
 
-//       }, 2000);
+// //       }, 2000);
 
-//      }
+// //      }
 
-//   };
+// //   };
 
-   const onFinish = async (values: MemberInterface) => {
+//    const onFinish = async (values: MemberInterface) => {
 
-    let payload = {
-      ...values,
-    };
+//     let payload = {
+//       ...values,
+//     };
 
-//     const res = await UpdateMemberById(id, payload);
+// //     const res = await UpdateMemberById(id, payload);
 
-//     if (res.status == 200) {
-//       messageApi.open({
-//         type: "success",
-//         content: res.data.message,
-//       });
+// //     if (res.status == 200) {
+// //       messageApi.open({
+// //         type: "success",
+// //         content: res.data.message,
+// //       });
 
-//       setTimeout(() => {
-//         navigate("/Profile");
-//       }, 2000);
+// //       setTimeout(() => {
+// //         navigate("/Profile");
+// //       }, 2000);
 
-//     } else {
-//       messageApi.open({
-//         type: "error",
-//         content: res.data.error,
-//       });
+// //     } else {
+// //       messageApi.open({
+// //         type: "error",
+// //         content: res.data.error,
+// //       });
 
-//     }
+// //     }
 
-   };
+//    };
 
-//   useEffect(() => {
-//     getUserById(id);
-//   }, []);
+// //   useEffect(() => {
+// //     getUserById(id);
+// //   }, []);
 
 
-  return (<>
-    {/* {contextHolder} */}
-    <div className="profileedit-container">
+//   return (<>
+//     {/* {contextHolder} */}
+//     <div className="profileedit-container">
       
-      <div className="profileedit-box">
-        <div className="back-arrow">
-            <ArrowBendUpLeft size={32} />
-        </div>
-        <img src={logo} className="logo" alt="Logo" />
-        <h2>PROFILE</h2>
-                                                                              {/* autoComplete="off" */}
-        <Divider />                                                                     
-        <Form name="basic" form={form} layout="vertical" onFinish={onFinish}> 
+//       <div className="profileedit-box">
+//         <div className="back-arrow">
+//             <ArrowBendUpLeft size={32} />
+//         </div>
+//         <img src={logo} className="logo" alt="Logo" />
+//         <h2>PROFILE</h2>
+//                                                                               {/* autoComplete="off" */}
+//         <Divider />                                                                     
+//         <Form name="basic" form={form} layout="vertical" onFinish={onFinish}> 
 
-          <Form.Item label="ชื่อจริง" name="first_name" rules={[{required: true,message: "กรุณากรอกชื่อ !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="ชื่อจริง" name="first_name" rules={[{required: true,message: "กรุณากรอกชื่อ !",},]}>
+//             <Input />
+//           </Form.Item>
 
-          <Form.Item label="นามสกุล" name="last_name" rules={[{required: true,message: "กรุณากรอกนามสกุล !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="นามสกุล" name="last_name" rules={[{required: true,message: "กรุณากรอกนามสกุล !",},]}>
+//             <Input />
+//           </Form.Item>
 
-          <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{required: true,message: "กรุณากรอกชื่อผู้ใช้ !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="ชื่อผู้ใช้" name="username" rules={[{required: true,message: "กรุณากรอกชื่อผู้ใช้ !",},]}>
+//             <Input />
+//           </Form.Item>
 
-          <Form.Item label="เบอร์โทรศัพท์" name="phonenumber" rules={[{pattern: /^[0-9]{10}$/,required: true,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="เบอร์โทรศัพท์" name="phonenumber" rules={[{pattern: /^[0-9]{10}$/,required: true,message: "กรอกเบอร์โทรศัพท์ให้ถูกต้อง !",},]}>
+//             <Input />
+//           </Form.Item>
 
-          <Form.Item label="อีเมล" name="email" rules={[{type: "email",message: "รูปแบบอีเมลไม่ถูกต้อง !",},{required: true,message: "กรุณากรอกอีเมล !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="อีเมล" name="email" rules={[{type: "email",message: "รูปแบบอีเมลไม่ถูกต้อง !",},{required: true,message: "กรุณากรอกอีเมล !",},]}>
+//             <Input />
+//           </Form.Item>
 
-          <Form.Item label="ที่อยู่" name="address" rules={[{required: true,message: "กรุณากรอกที่อยู่ !",},]}>
-            <Input />
-          </Form.Item>
+//           <Form.Item label="ที่อยู่" name="address" rules={[{required: true,message: "กรุณากรอกที่อยู่ !",},]}>
+//             <Input />
+//           </Form.Item>
 
-        <Form.Item>
-          <Space>
+//         <Form.Item>
+//           <Space>
             
-            <Button type="primary" htmlType="submit" className="btn update">อัปเดต</Button>
+//             <Button type="primary" htmlType="submit" className="btn update">อัปเดต</Button>
             
-            <Link to="/Profile">
-            <Button type="primary" htmlType="button" className="btn cancel">ยกเลิก</Button>
-            </Link>
+//             <Link to="/Profile">
+//             <Button type="primary" htmlType="button" className="btn cancel">ยกเลิก</Button>
+//             </Link>
 
-          </Space>
-        </Form.Item>
+//           </Space>
+//         </Form.Item>
 
 
-        </Form>
+//         </Form>
 
-      </div>
-    </div>
-  </>);
+//       </div>
+//     </div>
+//   </>);
+// }
+
+// export default ProfileEditTest;
+
+
+import "./EditProfile.css";
+import { useState, useEffect } from "react";
+import {
+  Space,
+  Button,
+  Col,
+  Row,
+  Divider,
+  Form,
+  Input,
+  Card,
+  message,
+  DatePicker,
+  Select,
+} from "antd";
+import dayjs from "dayjs";
+import { CustomerInterface } from "../../Interfaces/ICustomer";
+import { GendersInterface } from "../../Interfaces/IGender";
+import { GetAddressByCustomerID, GetCustomerByID, GetGenders, UpdateAddressByID, UpdateCustomerByID } from "../../services/http";
+import { useNavigate } from "react-router-dom";
+import { AddressInterface } from "../../Interfaces/IAddress";
+
+const { Option } = Select;
+
+interface DataInterface {
+  CustomerID?: number;
+  FirstName?: string;
+  LastName?: string;
+  Email?: string;
+  Password?: string;
+  Birthday?: dayjs.Dayjs;
+  GenderID?: number;
+  AddressID?: number;
+  Province?: string;
+  District?: string;
+  Subdistrict?: string;
+  ZipCode?: string;
+  AddressDetail?: string;
 }
 
-export default ProfileEditTest;
+function Edit() {
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [customer, setCustomer] = useState<CustomerInterface>();
+  const [genders, setGenders] = useState<GendersInterface[]>([]);
+  const [addresses, setAddresses] = useState<AddressInterface[]>([]);
+  const [selectedAddress, setSelectedAddress] = useState<AddressInterface | null>(null);
+  const [form] = Form.useForm();
+
+  const id = localStorage.getItem("id") || "";
+
+  const onFinish = async (values: DataInterface) => {
+
+    const birthDayFormatted = values.Birthday?.format('YYYY-MM-DDTHH:mm:ss[Z]') || "";
+
+    let payloadCustomer: CustomerInterface = {
+      FirstName: values.FirstName,
+      LastName: values.LastName,
+      Email: values.Email,
+      GenderID: values.GenderID,
+      Birthday: birthDayFormatted,
+    };
+
+    let payloadAddress: AddressInterface = {
+      AddressDetail: values.AddressDetail,
+      Subdistrict: values.Subdistrict,
+      District: values.District,
+      Province: values.Province,
+      ZipCode: values.ZipCode,
+    };
+
+    try {
+      let resCustomer = await UpdateCustomerByID(payloadCustomer, parseInt(id));
+      let resAddress = await UpdateAddressByID(payloadAddress, selectedAddress?.ID);
+
+      if (resCustomer && resAddress) {
+        messageApi.open({
+          type: "success",
+          content: resAddress.message,
+        });
+      } else {
+        messageApi.open({
+          type: "error",
+          content: resAddress.message || "Error updating data",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      messageApi.open({
+        type: "error",
+        content: "An error occurred",
+      });
+    }
+  };
+
+  const getGender = async () => {
+    let res = await GetGenders();
+    if (res) {
+      setGenders(res);
+    }
+  };
+
+  const getCustomerByID = async () => {
+    let res = await GetCustomerByID(parseInt(id));
+    if (res) {
+      setCustomer(res);
+      form.setFieldsValue({
+        FirstName: res.FirstName,
+        LastName: res.LastName,
+        GenderID: res.GenderID,
+        Email: res.Email,
+        Birthday: dayjs(res.Birthday), 
+      });
+    }
+  };
+
+  const getAddressByCustomerID = async () => {
+    let res = await GetAddressByCustomerID(parseInt(id));
+    if (res && res.length > 0) {
+      setAddresses(res);
+      setSelectedAddress(res[0]);
+      form.setFieldsValue({
+        SelectAddress: res[0].ID,
+        AddressDetail: res[0].AddressDetail,
+        Subdistrict: res[0].Subdistrict,
+        District: res[0].District,
+        Province: res[0].Province,
+        ZipCode: res[0].ZipCode,
+      });
+    }
+  };
+
+  const handleAddressChange = (value: number) => {
+    const selected = addresses.find(address => address.ID === value);
+    if (selected) {
+      setSelectedAddress(selected);
+      form.setFieldsValue({
+        AddressDetail: selected.AddressDetail,
+        Subdistrict: selected.Subdistrict,
+        District: selected.District,
+        Province: selected.Province,
+        ZipCode: selected.ZipCode,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getGender();
+    getCustomerByID();
+    getAddressByCustomerID();
+  }, []);
+
+  return (
+    <div className="edit-container">
+      {contextHolder}
+      <Card>
+        <h2> แก้ไขข้อมูลส่วนตัว</h2>
+        <Divider />
+        <Form
+          name="basic"
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          autoComplete="off"
+        >
+          <Row gutter={[16, 16]}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="FirstName"
+                name="FirstName"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="LastName"
+                name="LastName"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="Email"
+                name="Email"
+                rules={[{ type: "email", required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="Birthday"
+                name="Birthday"
+                rules={[
+                  {
+                    required: true
+                  },
+                ]}
+              >
+                <DatePicker style={{ width: "100%" }} format="YYYY-MM-DD" 
+                  onFocus={(e) => e.target.style.borderColor = '#ED2939'}
+                  onBlur={(e) => e.target.style.borderColor = '#ED2939'}
+                />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                
+                label="Gender"
+                name="GenderID"
+                rules={[{ required: true }]}
+              >
+                <Select allowClear style={{borderColor: 'red'}}>
+                  {genders.map((item) => (
+                    <Option value={item.ID} key={item.Name}>
+                      {item.Name}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                name="SelectAddress"
+                label="Select Address"
+                rules={[{ required: true }]}
+              >
+                <Select allowClear onChange={handleAddressChange}>
+                  {addresses.map((item) => (
+                    <Option value={item.ID} key={item.ID}>
+                      {item.AddressDetail}, {item.Subdistrict}, {item.District}, {item.Province}, {item.ZipCode}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="AddressDetail"
+                name="AddressDetail"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="SubDistrict"
+                name="Subdistrict"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="District"
+                name="District"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="Province"
+                name="Province"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
+              <Form.Item
+                label="ZipCode"
+                name="ZipCode"
+                rules={[{ required: true }]}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row justify="start">
+            <Col style={{ marginTop: "40px" }}>
+              <Form.Item>
+                <Space>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    className="submit-btn"
+                    
+                  >
+                    Update
+                  </Button>
+                </Space>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </Card>
+    </div>
+  );
+}
+
+export default Edit;

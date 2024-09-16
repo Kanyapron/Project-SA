@@ -6,11 +6,13 @@ import logo from '../../../assets/LogoOrange.png';
 import { Button, Form, Input, message, Col, Flex, Card, Row, Table} from "antd";
 import { Link, Routes, useNavigate, Route } from "react-router-dom";
 import { MemberInterface } from '../../../interfaces/Member';
-import {GetMemberByEmail} from '../../../services/https'
+import {GetMemberById} from '../../../services/https'
 
 function Profile() {
 
   const navigate = useNavigate();
+
+  const [uid , setUid] = useState<number | null>(Number(localStorage.getItem("id")))
 
   const [profileImage, setProfileImage] = useState<string | null>(null);
   
@@ -19,6 +21,9 @@ function Profile() {
   const [messageApi, contextHolder] = message.useMessage();
 
   const [users, setUsers] = useState<MemberInterface | null>(null);
+  //const [email, setEmail] = useState<MemberInterface | null>(null);
+  //const [phonenumber, setPhonenumber] = useState<MemberInterface | null>(null);
+
 
   // กำหนดประเภทของ e ให้เป็น React.ChangeEvent<HTMLInputElement>
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,50 +41,34 @@ function Profile() {
     fileInputRef.current?.click();
   };
 
-  // const GetMember = async () => {
+  const GetMemberid = async (user_id:number) => {
 
-  //   let res = await GetMember();
+    let res = await GetMemberById(user_id);
+    
+    if (res.status == 200) {
 
-   
-
-  //   if (res.status == 200) {
-
-  //     setUsers(res.data);
-
-  //   } else {
-
-  //     setUsers([]);
-
-  //     messageApi.open({
-
-  //       type: "error",
-
-  //       content: res.data.error,
-
-  //     });
-
-  //   }
-
-  // };
-
-  const GetUserProfile = async () => {
-    const email = localStorage.getItem('userEmail');
-    if (!email) {
-      messageApi.error("Email not found");
-      return;
-    }
-
-    const res = await GetMemberByEmail(email);
-
-    if (res.status === 200) {
       setUsers(res.data);
+
     } else {
-      messageApi.error(res.data.error || "Failed to fetch user data");
+
+
+      messageApi.open({
+
+        type: "error",
+
+        content: res.data.error,
+
+      });
+
     }
+
   };
 
+
   useEffect(() => {
-    GetUserProfile(); // ดึงข้อมูลผู้ใช้เมื่อหน้าโหลด
+    setUid(Number(localStorage.getItem("id")))
+    console.log(uid);
+    GetMemberid(uid); // ดึงข้อมูลผู้ใช้เมื่อหน้าโหลด
   }, []);
 
   const Logout = () => {

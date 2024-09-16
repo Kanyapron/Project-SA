@@ -47,11 +47,11 @@ async function GetMember() {
 }
 
 
-async function GetMemberById(id: string) {
+async function GetMemberById(id: number) {
 
   return await axios
 
-    .get(`${apiUrl}/user/${id}`, requestOptions)
+    .get(`${apiUrl}/member/${id}`, requestOptions)
 
     .then((res) => res)
 
@@ -60,11 +60,11 @@ async function GetMemberById(id: string) {
 }
 
 
-async function UpdateMemberById(id: string, data: MemberInterface) {
+async function UpdateMemberById(id: number, data: MemberInterface) {
 
   return await axios
 
-    .put(`${apiUrl}/user/${id}`, data, requestOptions)
+    .patch(`${apiUrl}/member/${id}`, data, requestOptions)
 
     .then((res) => res)
 
@@ -77,7 +77,7 @@ async function DeleteMemberById(id: string) {
 
   return await axios
 
-    .delete(`${apiUrl}/user/${id}`, requestOptions)
+    .delete(`${apiUrl}/member/${id}`, requestOptions)
 
     .then((res) => res)
 
@@ -100,7 +100,7 @@ async function CreateMember(data: MemberInterface) {
 
 async function GetMemberByEmail(email: string) {
   return await axios
-    .get(`${apiUrl}/user/email/${email}`, requestOptions)
+    .get(`${apiUrl}/member/email/${email}`, requestOptions)
     .then((res) => res)
     .catch((e) => e.response);
 }
