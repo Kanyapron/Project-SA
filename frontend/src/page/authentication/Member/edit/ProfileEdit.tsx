@@ -9,55 +9,65 @@ import { useNavigate, Link } from "react-router-dom";
 function ProfileEdit() {
   const navigate = useNavigate();
 
-  const uid = Number(localStorage.getItem("id"));
+  const storedUid = Number(localStorage.getItem("id")); // เปลี่ยน uid จาก localStorage
 
   const [messageApi, contextHolder] = message.useMessage();
 
   const [form] = Form.useForm();
 
+  const [uid , setUid] = useState<number | null>(Number(localStorage.getItem("id")));
+
   const [user, setUser] = useState<MemberInterface>();
 
+  // ฟังก์ชันสำหรับส่งค่าการแก้ไขข้อมูล
   const onFinish = async (values: MemberInterface) => {
-    values.ID = user?.ID;
-
-    let res = await UpdateMemberById(values);
-    if (res) {
-      messageApi.open({
-        type: "success",
-        content: res.message,
-      });
-      setTimeout(function () {
-        navigate("/Profile");
-      }, 2000);
+    if (uid !== null) {
+      values.ID = user?.ID;
+  
+      const res = await UpdateMemberById(uid, values);  // ตรวจสอบ uid ก่อนที่จะส่ง
+      if (res) {
+        messageApi.open({
+          type: "success",
+          content: res.message,
+        });
+        setTimeout(() => {
+          navigate("/Profile");
+        }, 2000);
+      } else {
+        messageApi.open({
+          type: "error",
+          content: res.message,
+        });
+      }
     } else {
       messageApi.open({
         type: "error",
-        content: res.message,
+        content: "ไม่พบ User ID",
       });
     }
   };
-
-  const GetMemberid = async () => {
-    let res = await GetMemberById(parseInt(uid)); // ใช้ค่า uid จาก localStorage
-    if (res) {
-      setUser(res);
-      // set form ข้อมูลเริ่มของผู้ใช้ที่เราแก้ไข
-      form.setFieldsValue({
-        FirstName: res.FirstName,
-        LastName: res.LastName,
-        Username: res.Username,
-        Email: res.Email,
-        Address: res.Address,
-      });
-    }
-  };
-  
 
   useEffect(() => {
-    console.log(localStorage.getItem("id"));
+    // ย้าย GetMemberid เข้าใน useEffect
+    const GetMemberid = async () => {
+      const res = await GetMemberById(storedUid); // ใช้ storedUid จาก localStorage
+      if (res) {
+        setUser(res);
+        // ตั้งค่าให้ฟอร์มมีข้อมูลของสมาชิก
+        form.setFieldsValue({
+          FirstName: res.FirstName,
+          LastName: res.LastName,
+          Username: res.Username,
+          Email: res.Email,
+          Address: res.Address,
+        });
+      }
+    };
+
+    setUid(Number(localStorage.getItem("id")));
+    console.log(uid);
     GetMemberid();
-  }, []);
-  
+  }, [uid, storedUid, form]); // กำหนด dependencies ให้เหมาะสม
 
   return (
     <>
@@ -65,7 +75,7 @@ function ProfileEdit() {
       <div className="profileedit-container">
         <div className="profileedit-box">
           <img src={logo} className="logo" alt="Logo" />
-          <h2>PROFILE EDIT</h2>
+          <h2>แก้ไขโปรไฟล์</h2>
           <Divider />
           <Form name="basic" form={form} layout="vertical" onFinish={onFinish}>
             <Form.Item label="ชื่อจริง" name="FirstName">
