@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import './ProfileEdit.css';
 import logo from '../../../../assets/LogoOrange.png';
-import { Button, Form, Input, message, Divider } from "antd";
+import { Button, Form, Input, message, Divider, Upload } from "antd";
 import { MemberInterface } from "../../../../interfaces/Member";
 import { GetMemberById, UpdateMemberById } from "../../../../services/https/index";
 import { useNavigate, Link } from "react-router-dom";
+import ImgCrop from "antd-img-crop";
+import type { GetProp, UploadFile, UploadProps } from "antd";
+import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
+type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 function ProfileEdit() {
   const navigate = useNavigate();
@@ -19,11 +23,32 @@ function ProfileEdit() {
 
   const [user, setUser] = useState<MemberInterface>();
 
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+  const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+  };
+
+  const onPreview = async (file: UploadFile) => {
+    let src = file.url as string;
+    if (!src) {
+      src = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file.originFileObj as FileType);
+        reader.onload = () => resolve(reader.result as string);
+      });
+    }
+    const image = new Image();
+    image.src = src;
+    const imgWindow = window.open(src);
+    imgWindow?.document.write(image.outerHTML);
+  };
+
   // ฟังก์ชันสำหรับส่งค่าการแก้ไขข้อมูล
   const onFinish = async (values: MemberInterface) => {
     if (uid !== null) {
       values.ID = user?.ID;
-  
+      values.ProfilePic = fileList[0].thumbUrl;
       const res = await UpdateMemberById(uid, values);  // ตรวจสอบ uid ก่อนที่จะส่ง
       if (res) {
         messageApi.open({
@@ -55,6 +80,7 @@ function ProfileEdit() {
         setUser(res);
         // ตั้งค่าให้ฟอร์มมีข้อมูลของสมาชิก
         form.setFieldsValue({
+          ProfilPic: res.ProfilePic,
           FirstName: res.FirstName,
           LastName: res.LastName,
           Username: res.Username,
@@ -77,6 +103,27 @@ function ProfileEdit() {
           <img src={logo} className="logo" alt="Logo" />
           <h2>แก้ไขโปรไฟล์</h2>
           <Divider />
+          
+          <Form.Item label="รูปประจำตัว" name="Profile" valuePropName="fileList">
+            <ImgCrop rotationSlider>
+              <Upload
+                fileList={fileList}
+                onChange={onChange}
+                onPreview={onPreview}
+                beforeUpload={(file) => {
+                  setFileList([...fileList, file]);
+                  return false;}}
+                maxCount={1}
+                multiple={false}
+                listType="picture-card">
+                <div>
+                  <PlusOutlined />
+                  <div style={{ marginTop: 8 }}>อัพโหลด</div>
+                </div>
+              </Upload>
+            </ImgCrop>
+          </Form.Item>
+
           <Form name="basic" form={form} layout="vertical" onFinish={onFinish}>
             <Form.Item label="ชื่อจริง" name="FirstName">
               <Input />
