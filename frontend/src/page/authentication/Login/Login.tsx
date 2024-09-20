@@ -1,11 +1,9 @@
 import './Login.css';
-import {ArrowBendUpLeft} from 'phosphor-react'
 import logo from'../../../assets/LogoOrange.png'
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Input, message, Col, Flex, Card, Row} from "antd";
 import { LoginInterface } from '../../../interfaces/Login';
 import {Login} from "../../../services/https"
-import HomeLogin from '../../HomeLogin/homelogin';
 
 
 function LoginPage(){
@@ -34,13 +32,11 @@ function LoginPage(){
 
       localStorage.setItem("id", res.data.id); // user ID
 
-      localStorage.setItem("userEmail", res.data.email); // เก็บ email ใน localStorage
-
       setTimeout(() => { 
 
         location.href = "/";
 
-      }, 2000);//เพื่อหน่วงเวลา 2 วินาทีก่อนจะเปลี่ยนเส้นทางไปที่หน้า /HomeLogin
+      }, 1000);//เพื่อหน่วงเวลา 2 วินาทีก่อนจะเปลี่ยนเส้นทางไปที่หน้า /HomeLogin
 
 
     } else {
@@ -49,9 +45,6 @@ function LoginPage(){
 
     }
   };
-
-  localStorage.getItem("userEmail");
-
 
   return (<>
 
