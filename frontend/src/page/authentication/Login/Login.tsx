@@ -36,12 +36,6 @@ function LoginPage(){
 
       localStorage.setItem("userEmail", res.data.email); // เก็บ email ใน localStorage
 
-      if (res.data.email) {
-        localStorage.setItem("userEmail", res.data.email); // เก็บ email ใน localStorage
-      } else {
-        messageApi.error("Email not found in response");
-      }
-
       setTimeout(() => { 
 
         location.href = "/";
