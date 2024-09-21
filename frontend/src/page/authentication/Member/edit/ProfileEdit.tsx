@@ -7,7 +7,7 @@ import { GetMemberById, UpdateMemberById } from "../../../../services/https/inde
 import { useNavigate, Link } from "react-router-dom";
 import ImgCrop from "antd-img-crop";
 import type { GetProp, UploadFile, UploadProps } from "antd";
-import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
+import { PlusOutlined} from "@ant-design/icons";
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 function ProfileEdit() {
@@ -57,25 +57,25 @@ function ProfileEdit() {
           const base64data = reader.result as string;
           values.ProfilePic = base64data; // ใช้ base64 สำหรับเก็บรูปที่ครอบแล้ว
 
-        const res = await UpdateMemberById(uid, values);  // ตรวจสอบ uid ก่อนที่จะส่ง
-        if (res) {
-          messageApi.open({
-            type: "success",
-            content: res.message,
-          });
-          setTimeout(() => {
-            navigate("/Profile");
-          }, 2000);
-        } else {
-          messageApi.open({
-            type: "error",
-            content: res.message,
-          });
+          const res = await UpdateMemberById(uid, values);  // ตรวจสอบ uid ก่อนที่จะส่ง
+          if (res) {
+            messageApi.open({
+              type: "success",
+              content: res.message,
+            });
+            setTimeout(() => {
+              navigate("/Profile");
+            }, 2000);
+          } else {
+            messageApi.open({
+              type: "error",
+              content: res.message,
+            });
+          }
         }
-      };
-    } else {
-      values.ProfilePic = fileList[0].thumbUrl; // ใช้ thumbUrl ถ้าไม่มีไฟล์
-    }
+      } else {
+        values.ProfilePic = fileList[0].thumbUrl; // ใช้ thumbUrl ถ้าไม่มีไฟล์ 
+      }
   }else {
     messageApi.open({
       type: "error",
@@ -101,7 +101,6 @@ function ProfileEdit() {
         });
       }
     };
-
     setUid(Number(localStorage.getItem("id")));
     console.log(uid);
     GetMemberid();
@@ -115,28 +114,35 @@ function ProfileEdit() {
           <img src={logo} className="logo" alt="Logo" />
           <h2>แก้ไขโปรไฟล์</h2>
           <Divider />
-          
-          <Form.Item label="รูปประจำตัว" name="Profile" valuePropName="fileList">
-            <ImgCrop aspect={1} rotationSlider>
-              <Upload
-                fileList={fileList}
-                onChange={onChange}
-                onPreview={onPreview}
-                beforeUpload={(file) => {
-                  setFileList([...fileList, file]);
-                  return false;}}
-                maxCount={1}
-                multiple={false}
-                listType="picture-card">
-                <div>
-                  <PlusOutlined />
-                  <div style={{ marginTop: 8 }}>อัพโหลด</div>
-                </div>
-              </Upload>
-            </ImgCrop>
-          </Form.Item>
 
-          <Form name="basic" form={form} layout="vertical" onFinish={onFinish}>
+          <Form form={form} layout="vertical" onFinish={onFinish} initialValues={{
+            ProfilePic: user?.ProfilePic,
+            FirstName: user?.FirstName,
+            LastName: user?.LastName,
+            Username: user?.Username,
+            Email: user?.Email,
+            Address: user?.Address,
+            PhoneNumber: user?.PhoneNumber,}}>
+            <Form.Item label="รูปประจำตัว" name="Profile" valuePropName="fileList">
+              <ImgCrop aspect={1} rotationSlider>
+                <Upload
+                  fileList={fileList}
+                  onChange={onChange}
+                  onPreview={onPreview}
+                  beforeUpload={(file) => {
+                    setFileList([...fileList, file]);
+                    return false;}}
+                  maxCount={1}
+                  multiple={false}
+                  listType="picture-card">
+                  <div>
+                    <PlusOutlined />
+                    <div style={{ marginTop: 8 }}>อัพโหลด</div>
+                  </div>
+                </Upload>
+              </ImgCrop>
+            </Form.Item>
+
             <Form.Item label="ชื่อจริง" name="FirstName">
               <Input />
             </Form.Item>
