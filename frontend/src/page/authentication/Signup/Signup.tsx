@@ -18,7 +18,7 @@ import type { UploadFile, UploadProps } from "antd";
 
 import { useState } from "react";
 
-import { Upload } from "antd"; // เพิ่มบรรทัดนี้
+import { Upload } from "antd"; 
 
 import "./Signup.css"
 
