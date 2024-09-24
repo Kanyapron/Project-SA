@@ -111,6 +111,16 @@ function ProfileEdit() {
           PhoneNumber: res.data.PhoneNumber,
           Address: res.data.Address,
         });
+        if (res.data.ProfilePic) {
+          setFileList([
+            {
+              uid: '-1',
+              name: 'profile.png', // หรือชื่อไฟล์ที่เหมาะสม
+              status: 'done',
+              url: res.data.ProfilePic, // ใช้ URL ของรูปโปรไฟล์ที่มีอยู่
+            },
+          ]);
+        }
       }
     };
     setUid(storedUid);

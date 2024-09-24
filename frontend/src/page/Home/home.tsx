@@ -48,7 +48,7 @@ const HomePage = () => {
           </center>
         </div>
         <div className="category-section">
-          <img src={categoryIcon1} alt="category1" />
+          <img src={categoryIcon1} alt="category1" onClick={}/>
           <img src={categoryIcon2} alt="category2" />
           <img src={categoryIcon3} alt="category3" />
           <img src={categoryIcon4} alt="category4" />
